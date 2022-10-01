@@ -4,12 +4,14 @@ from .views import NewsView, CommentsView
 from rest_framework import routers
 from rest_framework.authtoken import views
 
-router = routers.SimpleRouter()
-router.register(r'news', NewsView)
-print(router.urls)
+news_router = routers.SimpleRouter()
+news_router.register(r'news', NewsView)
+
+comments_router = routers.SimpleRouter()
+comments_router.register(r'comments', CommentsView, basename='comments')
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('^news/(?P<pk>[^/.]+)/comments/', CommentsView.as_view({'get': 'list', 'post': 'create'})),
+    path('', include(news_router.urls)),
+    path('news/<int:news_pk>/', include(comments_router.urls)),
     path('auth/', views.obtain_auth_token),
 ]

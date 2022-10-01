@@ -7,6 +7,8 @@ class NewsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CommentsSerializer(serializers.ModelSerializer):
+    news_id = serializers.IntegerField(read_only=True)
+    author = serializers.CharField(read_only=True)
     class Meta:
         model = Comments
-        fields = '__all__'
+        fields = ['date', 'content', 'author', 'news_id']

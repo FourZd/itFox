@@ -17,9 +17,11 @@ class NewsView(viewsets.ModelViewSet):
 
 
 class CommentsView(viewsets.ModelViewSet):
-    serializer_class = CommentsSerializer
-
-    def get_queryset(self):
-        return Comments.objects.all()
-
     
+    serializer_class = CommentsSerializer
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user, news_id=self.kwargs['news_pk'])
+
+    def get_queryset(self, **kwargs):
+        queryset = Comments.objects.filter(news_id=self.kwargs['news_pk'])
+        return queryset
