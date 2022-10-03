@@ -1,6 +1,7 @@
 # itFox
 
 SERVER IP: 3.73.56.209
+
 Deployed with gunicorn & nginx & AWS
 
 Available routes:
@@ -24,7 +25,7 @@ Available routes:
     • POST like /api/v1/news/<news_id>/like/
     • POST unlike /api/v1/news/<news_id>/unlike/
 
-# На комментирование основного кода не хватило времени :( 
-# Если будут какие-то вопросы - пишите, постараюсь сразу же ответить.
+На комментирование основного кода не хватило времени :( 
+Если будут какие-то вопросы - пишите, постараюсь сразу же ответить.
 
 Made by Nikolay "FourZd" Ryaskov
